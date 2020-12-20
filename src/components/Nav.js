@@ -38,6 +38,11 @@ const StyledNav = styled.nav`
     color: #fff;
     text-decoration: none;
     font-weight: bold;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #23d997;
+    }
   }
 
   ul {
