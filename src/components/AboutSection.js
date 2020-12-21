@@ -46,6 +46,8 @@ const AboutSection = () => {
       <ImageDiv>
         <motion.img
           variants={photoAnimation}
+          // initial="hidden"
+          // animate="show"
           src={home1}
           alt="Man with the camera"
         />
