@@ -3,10 +3,18 @@ import styled from "styled-components/macro";
 import { About } from "../styles";
 import Toggle from "./Toggle";
 import { AnimateSharedLayout } from "framer-motion";
+import { useScroll } from "./useScroll";
+import { scrollReveal } from "../animation";
 
 const FAQSection = () => {
+  const [element, controls] = useScroll();
   return (
-    <Faq>
+    <Faq
+      variants={scrollReveal}
+      ref={element}
+      animate={controls}
+      initial="hidden"
+    >
       <AnimateSharedLayout>
         <h2>
           Any questions <span>FAQ</span>

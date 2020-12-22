@@ -12,9 +12,20 @@ import {
   lineAnimation,
   slider,
   sliderContainer,
+  swoop,
 } from "../animation";
+import { useScroll } from "../components/useScroll";
+import ScrollTop from "../components/ScrollTop";
 
 const OurWork = () => {
+  const [element, controls] = useScroll();
+  const [element2, controls2] = useScroll();
+
+  //PROBLEM
+  // i cant use custom useScroll() animation on
+  // <Movie ref={element} variants={fade} animate={controls} initial="hidden">...</Movie>
+  // as I add this attr's to the Movie tag all the above animations - on Frames and 1st <Movie> -
+  // doesnot work. The stay 'hidden'
   return (
     <Work
       variants={pageAnimation}
@@ -29,7 +40,6 @@ const OurWork = () => {
         <Frame3 variants={slider}></Frame3>
         <Frame4 variants={slider}></Frame4>
       </motion.div>
-
       <Movie>
         <motion.h2 variants={fade}>The Athlete</motion.h2>
         <motion.div variants={lineAnimation} className="line"></motion.div>
@@ -39,24 +49,27 @@ const OurWork = () => {
           </ImageWrapper>
         </Link>
       </Movie>
+
       <Movie>
         <h2>The Racer</h2>
-        <div className="line"></div>
+        <motion.div className="line" variants={lineAnimation}></motion.div>
         <Link to="/work/the-racer">
           <ImageWrapper>
             <img src={theracer} alt="theracer" />
           </ImageWrapper>
         </Link>
       </Movie>
+
       <Movie>
         <h2>Good Times</h2>
-        <div className="line"></div>
+        <motion.div className="line" variants={lineAnimation}></motion.div>
         <Link to="/work/good-times">
           <ImageWrapper>
             <img src={goodtimes} alt="good times" />
           </ImageWrapper>
         </Link>
       </Movie>
+      <ScrollTop />
     </Work>
   );
 };
@@ -75,7 +88,7 @@ const ImageWrapper = styled.div`
   overflow: hidden;
 `;
 
-const Movie = styled.div`
+const Movie = styled(motion.div)`
   padding-bottom: 10rem;
 
   .line {

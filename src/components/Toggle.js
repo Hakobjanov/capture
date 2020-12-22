@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 //in which around Toggle component is wrapped
 
 const Toggle = ({ children, title }) => {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   return (
     <motion.div layout className="question" onClick={() => setToggle(!toggle)}>
